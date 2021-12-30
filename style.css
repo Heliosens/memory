@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    width: 100%;
+}
+
+#game {
+    display: flex;
+}
+
+#game div {
+    width: 10vw;
+    height: 15vh;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
