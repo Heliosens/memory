@@ -15,4 +15,6 @@ let arrCard = [
 
 let play = new Cards(arrCard);
 play.setCard(game, 10);
+play.setCard(game, 10);
 
+game.style.height = innerHeight + "px";
