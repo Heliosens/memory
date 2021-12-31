@@ -1,5 +1,5 @@
 let game = document.getElementById('game');
-game.style.height = innerHeight + "px";
+game.style.height = innerHeight *0.9 + "px";
 
 let arrCard = [
     "img/booba.png",
@@ -14,6 +14,7 @@ let arrCard = [
     "img/robot.png"
 ];
 
-let play = new Cards(arrCard);
-play.checkArray(game, 20);
+let play = new Cards(game, arrCard);
+play.checkArray(20);
+play.coverCards();
 
