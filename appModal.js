@@ -6,7 +6,7 @@
  *      .inputBox id='inputModalId';
  *  create close button
  *      .closeBtn id='btnModalId'
- * @param target
+ * @param target (element)
  * @param screenColor
  * @param w
  * @param h

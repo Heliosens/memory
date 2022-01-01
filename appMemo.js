@@ -14,7 +14,9 @@ let arrCard = [
     "img/robot.png"
 ];
 
-let play = new Cards(game, arrCard);
-play.checkArray(20);
-play.coverCards();
 
+
+let play = new Cards(game, arrCard);
+play.checkArray(10);
+play.coverCards("url('img/mudhorn.png')");
+play.inGame();
