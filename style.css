@@ -36,3 +36,6 @@ main {
     opacity: 80%;
 }
 
+.test span {
+    transition: transform 2s;
+}
