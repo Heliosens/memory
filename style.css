@@ -26,6 +26,7 @@ main {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 #game div {
@@ -41,4 +42,12 @@ span {
 .face {
     transform: rotateY(90deg);
     transition: transform .5s;
+}
+
+#theBox {
+    background-image: url("img/mandalorian-end.jpg");
+    background-size: cover;
+    color: white;
+    font-size: 2vw;
+    -webkit-text-stroke: 1px #000;
 }

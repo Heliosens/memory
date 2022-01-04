@@ -1,10 +1,6 @@
 let game = document.getElementById('game');
 game.style.height = innerHeight *0.9 + "px";
 
-// let firstScreen = new ModalWindow(game, "", "80vw", "80vh", "white", "");
-// firstScreen.screen();
-// firstScreen.box("le Mandalorien vous souhiate la bienvenue", "choisissez le nombre de cartes");
-
 let arrCard = [
     "img/booba.png",
     "img/darkTrooper.png",
@@ -55,11 +51,11 @@ for(let i = 0 ; i < backCard.length ; i++){
         if(test.length === 2) {
             if (test[0].style.backgroundImage === test[1].style.backgroundImage) {
                 for (let item of test) {
-                    // suppr class hide
+                    // remove class hide
                     item.parentElement.classList.toggle('hide');
                     // if there's no more hide => win
-                    if (hide.length === 0) {
-                        let win = new ModalWindow(game, '#00000080', '50%', '50vh',
+                    if (hide.length === 8) {
+                        let win = new ModalWindow(game, '#ffffff80', '50%', '50vh',
                             '#fff', "1px solid #fff");
                         win.screen();
                         win.box('BRAVO !!!', 'Vous avez trouvé toutes les paires de cartes');
