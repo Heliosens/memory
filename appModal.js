@@ -21,18 +21,17 @@ function ModalWindow (target, screenColor, w, h, boxColor, border){
      */
     this.screen = function (){
         let fullScreen = document.createElement('div');
-        fullScreen.style.width = innerWidth + "px";
-        fullScreen.style.height = innerHeight + "px";
-        fullScreen.style.backgroundColor = screenColor;
-
-        fullScreen.style.position = "absolute";
-        fullScreen.style.top = "0";
-        fullScreen.style.left = "0";
-
-        fullScreen.style.display = "flex";
-        fullScreen.style.justifyContent = "center";
-        fullScreen.style.alignItems = "center";
-
+        fullScreen.style.cssText = `
+            width :` + innerWidth + `"px";
+            height :` + innerHeight + `"px";
+            background-color : ` + screenColor + `;
+            position : absolute;
+            top : 0;
+            left : 0;
+            display : flex;
+            justify-content = center;
+            align-items : center;
+        `;
         fullScreen.id = 'container';
 
         target.appendChild(fullScreen);
@@ -47,16 +46,22 @@ function ModalWindow (target, screenColor, w, h, boxColor, border){
         // create modal window
         let theBox = document.createElement('div');
         // style
-        theBox.style.backgroundColor = boxColor;
-        theBox.style.border = border;
-        theBox.style.width = w;
-        theBox.style.height = h;
-        theBox.style.padding = "1vh";
-        theBox.style.fontFamily = "sans-serif";
-        theBox.style.display = "flex";
-        theBox.style.flexDirection = "column";
-        theBox.style.justifyContent = "space-around";
-        theBox.style.alignItems = "center";
+        theBox.style.cssText = `
+            width :` + w + `;
+            height :` + h + `;
+            background-color : ` + boxColor + `;
+            position : absolute;
+            top : 0;
+            left : 0;
+            display : flex;
+            flex-direction = column;
+            justify-content = space-around;
+            align-items : center;
+            border : ` + border + `;
+            padding : 1vh;
+            font-family = sans-serif;
+          
+        `;
 
         // affect id
         theBox.id = "theBox";

@@ -12,6 +12,9 @@ html {
 
 body {
     width: 100%;
+    background-image: url("img/land.png");
+    background-size: cover;
+    background-position: center;
 }
 
 main {
@@ -29,13 +32,13 @@ main {
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    margin: .5rem;
 }
 
-#game span {
-    opacity: 80%;
+span {
+    transition: transform .5s;
 }
 
-.test span {
-    transition: transform 2s;
+.face {
+    transform: rotateY(90deg);
+    transition: transform .5s;
 }

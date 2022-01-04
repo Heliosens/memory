@@ -23,14 +23,21 @@ function Cards (elem, array) {
         }
 
         for(let i = 0 ; i < nbr ; i++){
-            let one = document.createElement('div');
-            one.style.backgroundImage = 'url(' + this.arr[dblArr[i]] + ')';
-            one.style.width = 200 / nbr + "%";
-            one.style.height = '30%';
-            one.classList.add('hide');
-            one.style.position = 'relative';
-            this.place.appendChild(one);
+            let frame = document.createElement('div');
+            frame.style.width = 200 / nbr + "%";
+            frame.style.height = '30%';
+            frame.style.position = 'relative';
+            frame.classList.add('frame');
+            frame.classList.add("hide");
+            let face = document.createElement('div');
+            face.classList.add("face");
 
+            face.style.width = '100%';
+            face.style.height = '100%';
+            face.style.backgroundImage = 'url(' + this.arr[dblArr[i]] + ')';
+
+            frame.appendChild(face);
+            this.place.appendChild(frame);
         }
     }
 
@@ -39,7 +46,7 @@ function Cards (elem, array) {
      * @param url
      */
     this.coverCards = function (url){
-        let one = game.getElementsByTagName('div');
+        let one = game.getElementsByClassName('frame');
         for(let i = 0 ; i < 10 ; i++){
             let backCard = document.createElement('span');
             backCard.style.cssText = `
@@ -54,57 +61,6 @@ function Cards (elem, array) {
                 left: 0;
             `;
             one[i].appendChild(backCard);
-        }
-    }
-
-    /**
-     *
-     */
-    this.inGame = function (){
-        let backCard = game.getElementsByTagName('span');
-
-        for (let item of backCard){
-
-            let time = 0;
-            item.addEventListener('click', function (){
-                time++;
-                if(time < 2){
-                    // show card
-                    item.parentElement.classList.toggle('test');
-                    item.style.visibility = 'hidden';
-
-                    // get two card to test
-                    let test = game.getElementsByClassName('test');
-                    // get hide element
-                    let hide = document.getElementsByClassName('hide');
-
-                    if(test.length === 2){
-                        if(test[0].style.backgroundImage === test[1].style.backgroundImage){
-                            for(let item of test){
-                                item.classList.toggle('hide');
-                                if(hide.length === 0){
-                                    let win = new ModalWindow(game, '#00000080', '50%', '50vh',
-                                        '#fff', "1px solid #fff");
-                                    win.screen();
-                                    win.box('You win !!!', 'Bravo, vous avez trouvé toutes les paires de cartes');
-                                }
-                            }
-                        }
-                        else {
-                            for(let item of hide){
-                                setTimeout(function (){
-                                    item.querySelector('span').style.visibility = 'visible';
-                                    backCard = game.getElementsByTagName('span');
-                                }, 1000);
-                            }
-                        }
-                        test[0].classList.toggle('test');
-                        test[0].classList.toggle('test');
-                        time = 0;
-                    }
-                }
-
-            })
         }
     }
 }
