@@ -41,8 +41,9 @@ function ModalWindow (target, screenColor, w, h, boxColor, border){
      * create modal window
      * @param title
      * @param text
+     * @param imgBack
      */
-    this.box = function (title = "", text =""){
+    this.box = function (title = "", text ="", imgBack){
         // create modal window
         let theBox = document.createElement('div');
 
@@ -53,6 +54,7 @@ function ModalWindow (target, screenColor, w, h, boxColor, border){
         theBox.style.cssText = `
             width :` + w + `;
             height :` + h + `;
+            background-image:` + imgBack + `;
             display : flex;
             flex-direction : column;
             justify-content : space-around;

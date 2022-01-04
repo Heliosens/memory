@@ -1,28 +1,33 @@
-function Cards (elem, array) {
+function Cards (elem, array, nbr) {
     this.place = elem;
     this.arr = array;
+    this.nbr = nbr;
 
     /**
      * take the number of cards, add double,
      * check and display
-     * @param nbr
      */
-    this.checkArray = function (nbr){
+    this.checkArray = function (){
+        let newImg = [];
+        for(let i = 0 ; i < this.nbr / 2 ; i++){
+            newImg.push(this.arr[0][4][i]);
+        }
+
         let itemArr = [];
         let dblArr = [];
 
-        for(let i = 0 ; i < nbr / 2 ; i++){
+        for(let i = 0 ; i < newImg.length ; i++){
             itemArr.push(i);
             itemArr.push(i);
         }
 
-        for(let i = 0 ; i < nbr ; i++){
+        for(let i = 0 ; i < this.nbr ; i++){
             let x = Math.floor(Math.random() * itemArr.length);
             dblArr.push(itemArr[x]);
             itemArr.splice(x, 1)
         }
 
-        for(let i = 0 ; i < nbr ; i++){
+        for(let i = 0 ; i < this.nbr ; i++){
             let frame = document.createElement('div');
             frame.style.width = 200 / nbr + "%";
             frame.style.height = '30%';
@@ -34,7 +39,8 @@ function Cards (elem, array) {
 
             face.style.width = '100%';
             face.style.height = '100%';
-            face.style.backgroundImage = 'url(' + this.arr[dblArr[i]] + ')';
+
+            face.style.backgroundImage = 'url(' + newImg[dblArr[i]] + ')';
 
             frame.appendChild(face);
             this.place.appendChild(frame);
@@ -47,7 +53,7 @@ function Cards (elem, array) {
      */
     this.coverCards = function (url){
         let one = game.getElementsByClassName('frame');
-        for(let i = 0 ; i < 10 ; i++){
+        for(let i = 0 ; i < nbr ; i++){
             let backCard = document.createElement('span');
             backCard.style.cssText = `
                 background-image: ` + url + `;

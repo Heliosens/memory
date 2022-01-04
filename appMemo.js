@@ -1,23 +1,32 @@
 let game = document.getElementById('game');
 game.style.height = innerHeight *0.9 + "px";
 
-let arrCard = [
-    "img/booba.png",
-    "img/darkTrooper.png",
-    "img/grogu.png",
-    "img/grogu02.png",
-    "img/jedi.png",
-    "img/manda01.png",
-    "img/manda02.png",
-    "img/manda03.png",
-    "img/manda04.png",
-    "img/robot.png"
-];
+let themes = document.querySelector('#themes');
+let number = document.getElementById('choice').getElementsByTagName("a");
 
-// game
-// let play = new Cards(game, arrCard);
-// play.checkArray(10);
-// play.coverCards("url('img/mudhorn.png')");
+// get themes
+for(let i = 0 ; i < arrTheme.length ; i++){
+    let div = document.createElement('div');
+    div.style.backgroundImage = arrTheme[i][1];
+    div.className = 'theme';
+    themes.appendChild(div);
+}
+
+// get user choice nbr = nbr of cards, theme = idx of theme
+let nbr = 0;
+for(let item of number){
+    item.addEventListener('click', function (event){
+        event.preventDefault();
+        nbr = item.innerHTML;
+        console.log(nbr);
+        // game
+        let play = new Cards(game, arrTheme, nbr);
+    })
+}
+
+
+play.checkArray();
+play.coverCards(arrTheme[0][1]);
 
 // get element
 let backCard = game.getElementsByTagName('span');
@@ -55,11 +64,11 @@ for(let i = 0 ; i < backCard.length ; i++){
                     // remove class hide
                     item.parentElement.classList.toggle('hide');
                     // if there's no more hide => win
-                    if (hide.length === 8) {
+                    if (hide.length === 0) {
                         let win = new ModalWindow(document.body, '#ffffff80', '50%', '60vh',
                             '#fff', "1px solid #fff");
                         win.screen();
-                        win.box('BRAVO !!!', 'Vous avez trouvé toutes les cartes');
+                        win.box('BRAVO !!!', 'Vous avez trouvé toutes les cartes', arrTheme[0][3]);
                     }
                 }
             }
@@ -67,7 +76,6 @@ for(let i = 0 ; i < backCard.length ; i++){
                 for(let item of hide){
                     setTimeout(function (){
                         item.querySelector('span').style.transform = 'rotateY(0deg)';
-                        // backCard = game.getElementsByTagName('span');
                         time = 0;
                     }, 1000);
                 }

@@ -12,32 +12,69 @@ html {
 
 body {
     width: 100%;
-    background-image: url("img/land.png");
+    background-color: #a196c2;
     background-size: cover;
     background-position: center;
+
+}
+
+h1 {
+    margin-top: 1vh;
+    text-shadow: white 2px 2px 3px;
+    font-size: 2.5vw;
+}
+
+h2 {
+    margin: 4vh 0;
+    font-size: 2vw;
 }
 
 main {
     margin: auto;
 }
 
-a {
+#choice {
+    width: 50%;
+    margin: auto;
+}
+
+section div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+section h2 {
+    flex-basis: 100%;
+}
+
+#choice a {
     text-decoration: none;
     color: black;
+    background-color: white;
+    font-size: 4vw;
+    width: 6vw;
 }
 
 #game {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     position: relative;
 }
 
-#game div {
+.theme, #game div {
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.theme {
+    width: 30%;
+    padding-bottom: 30%;
+    background-image: url("img/lordOfRings/lotr01.png");
+
 }
 
 span {
@@ -49,10 +86,10 @@ span {
     transition: transform .5s;
 }
 
-main #theBox {
-    background-image: url("img/mandalorian-end.jpg");
+#theBox {
     background-size: cover;
     color: white;
     font-size: 2vw;
     -webkit-text-stroke: 1px #000;
 }
+
