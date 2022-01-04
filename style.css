@@ -44,7 +44,7 @@ span {
     transition: transform .5s;
 }
 
-#theBox {
+main #theBox {
     background-image: url("img/mandalorian-end.jpg");
     background-size: cover;
     color: white;

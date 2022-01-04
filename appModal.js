@@ -41,7 +41,6 @@ function ModalWindow (target, screenColor, w, h, boxColor, border){
      * create modal window
      * @param title
      * @param text
-     * @param url
      */
     this.box = function (title = "", text =""){
         // create modal window
@@ -52,12 +51,13 @@ function ModalWindow (target, screenColor, w, h, boxColor, border){
 
         // style
         theBox.style.cssText = `
-            width :50%;
-            height :50vh;
+            width :` + w + `;
+            height :` + h + `;
             display : flex;
             flex-direction : column;
             justify-content : space-around;
             align-items : center;
+            border: ` + border + `;
         `;
 
         // create title

@@ -14,9 +14,10 @@ let arrCard = [
     "img/robot.png"
 ];
 
-let play = new Cards(game, arrCard);
-play.checkArray(10);
-play.coverCards("url('img/mudhorn.png')");
+// game
+// let play = new Cards(game, arrCard);
+// play.checkArray(10);
+// play.coverCards("url('img/mudhorn.png')");
 
 // get element
 let backCard = game.getElementsByTagName('span');
@@ -55,15 +56,14 @@ for(let i = 0 ; i < backCard.length ; i++){
                     item.parentElement.classList.toggle('hide');
                     // if there's no more hide => win
                     if (hide.length === 8) {
-                        let win = new ModalWindow(game, '#ffffff80', '50%', '50vh',
+                        let win = new ModalWindow(document.body, '#ffffff80', '50%', '60vh',
                             '#fff', "1px solid #fff");
                         win.screen();
-                        win.box('BRAVO !!!', 'Vous avez trouvé toutes les paires de cartes');
+                        win.box('BRAVO !!!', 'Vous avez trouvé toutes les cartes');
                     }
                 }
             }
             else {
-                console.log(hide)
                 for(let item of hide){
                     setTimeout(function (){
                         item.querySelector('span').style.transform = 'rotateY(0deg)';
