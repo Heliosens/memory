@@ -55,18 +55,18 @@ section h2 {
 }
 
 #game {
-    /*display: none;*/
+    display: none;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     position: relative;
+    opacity: 0;
 }
 
 #game div {
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    border: 1px solid red;
 }
 
 .select {
@@ -77,10 +77,10 @@ span {
     transition: transform .5s;
 }
 
-/*.face {*/
-/*    transform: rotateY(90deg);*/
-/*    transition: transform .5s;*/
-/*}*/
+.face {
+    transform: rotateY(90deg);
+    transition: transform .5s;
+}
 
 #theBox {
     background-size: cover;

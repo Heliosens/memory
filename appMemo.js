@@ -17,83 +17,101 @@ for(let i = 0 ; i < arrTheme.length ; i++){
 // get user choice nbr = nbr of cards, theme = url of theme
 let nbr;
 let idx;
+
 toggleClass(themes.getElementsByTagName('img'));
 toggleClass(number);
 
+let backCard;
+let face;
+
+// listen two choices
 for(let item of choice){
     item.addEventListener('click', ()=> {
         if(document.getElementsByClassName('select').length === 2){
             nbr = document.getElementsByClassName('select')[0].innerHTML;
             idx =document.getElementsByClassName('select')[1].dataset.idx;
             document.getElementById('first').style.opacity = '0%';
-            setTimeout(()=>{document.getElementById('first').style.display = "none";},1000);
+
+            setTimeout(()=>{
+                document.getElementById('first').style.display = "none";
+                game.style.display = "flex";
+                game.style.transition = "opacity 1s";
+                game.style.opacity = '100%';
+                },500);
             // game
             let play = new Cards(game, arrTheme, nbr, idx);
             play.checkArray();
             play.coverCards();
+
+            playing();
         }
     })
 }
 
-// get element
-let backCard = game.getElementsByTagName('span');
-let face = game.getElementsByClassName('face');
+function playing (){
+    // get element
+    backCard = game.getElementsByTagName('span');
+    face = game.getElementsByClassName('face');
 // nbr of click
-let time = 0;
+    let time = 0;
+    for(let i = 0 ; i < backCard.length ; i++){
+        backCard[i].addEventListener('click', function (){
+            time++;
+            // allow two click
+            if(time === 1){
+                turnCard(i);
+            }
+            if(time === 2){
+                turnCard(i);
 
-for(let i = 0 ; i < backCard.length ; i++){
-    backCard[i].addEventListener('click', function (){
-        time++;
-        // allow two click
-        if(time === 1){
-            turnCard(i);
-        }
-        if(time === 2){
-            turnCard(i);
+                // show face
+                setTimeout(function (){
+                    face[i].style.transform = "rotate(0deg)";
+                }, 500)
+            }
 
-            // show face
-            setTimeout(function (){
-                face[i].style.transform = "rotate(0deg)";
-            }, 500)
-        }
+            // get cards to test
+            let test = game.getElementsByClassName('test');
 
-        // get cards to test
-        let test = game.getElementsByClassName('test');
+            // get hide element
+            let hide = document.getElementsByClassName('hide');
 
-        // get hide element
-        let hide = document.getElementsByClassName('hide');
+            // if background are the same
+            if(test.length === 2) {
+                if (test[0].style.backgroundImage === test[1].style.backgroundImage) {
+                    for (let item of test) {
+                        // remove class hide
+                        item.parentElement.classList.toggle('hide');
+                        // if there's no more hide => win
+                        if (hide.length === 0) {
+                            setTimeout(function (){
+                                let win = new ModalWindow(document.body, '#ffffff80', '50%', '60vh',
+                                    '#fff', "1px solid #fff");
+                                win.screen();
+                                win.box('BRAVO !!!', 'Vous avez trouvé toutes les cartes', arrTheme[0][3]);
+                            }, 1000)
 
-        // if background are the same
-        if(test.length === 2) {
-            if (test[0].style.backgroundImage === test[1].style.backgroundImage) {
-                for (let item of test) {
-                    // remove class hide
-                    item.parentElement.classList.toggle('hide');
-                    // if there's no more hide => win
-                    if (hide.length === 0) {
-                        let win = new ModalWindow(document.body, '#ffffff80', '50%', '60vh',
-                            '#fff', "1px solid #fff");
-                        win.screen();
-                        win.box('BRAVO !!!', 'Vous avez trouvé toutes les cartes', arrTheme[0][3]);
+                        }
                     }
                 }
-            }
-            else {
-                for(let item of hide){
-                    setTimeout(function (){
-                        item.querySelector('span').style.transform = 'rotateY(0deg)';
-                        time = 0;
-                    }, 1000);
+                else {
+                    for(let item of hide){
+                        setTimeout(function (){
+                            item.querySelector('span').style.transform = 'rotateY(0deg)';
+                            time = 0;
+                        }, 1000);
+                    }
                 }
-            }
 
-            // suppr class test
-            test[0].classList.toggle('test');
-            test[0].classList.toggle('test');
-            time = test.length;
-        }
-    })
+                // suppr class test
+                test[0].classList.toggle('test');
+                test[0].classList.toggle('test');
+                time = test.length;
+            }
+        })
+    }
 }
+
 
 // listen card, add class and hide
 function turnCard (item) {
