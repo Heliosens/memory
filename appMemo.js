@@ -67,15 +67,12 @@ function playing (){
             time++;
             // allow two click
             if(time === 1){
+                // show face
                 turnCard(i);
             }
             if(time === 2){
-                turnCard(i);
-
                 // show face
-                setTimeout(function (){
-                    face[i].style.transform = "rotate(0deg)";
-                }, 500)
+                turnCard(i);
             }
 
             // get cards to test
@@ -118,6 +115,7 @@ function playing (){
                 else {
                     for(let item of hide){
                         setTimeout(function (){
+                            item.querySelector('div').style.transform = 'rotateY(90deg)';
                             item.querySelector('span').style.transform = 'rotateY(0deg)';
                             time = 0;
                         }, 1000);
