@@ -27,7 +27,8 @@ let face;
 // listen two choices
 for(let item of choice){
     item.addEventListener('click', ()=> {
-        if(document.getElementsByClassName('select').length === 2){
+        let selected = document.getElementsByClassName('select');
+        if(selected.length === 2){
             nbr = document.getElementsByClassName('select')[0].innerHTML;
             idx =document.getElementsByClassName('select')[1].dataset.idx;
             document.getElementById('first').style.opacity = '0%';
@@ -37,6 +38,9 @@ for(let item of choice){
                 game.style.display = "flex";
                 game.style.transition = "opacity 1s";
                 game.style.opacity = '100%';
+                for(let item of choice){
+                    item.classList.remove('select');
+                }
                 // game
                 let play = new Cards(game, arrTheme, nbr, idx);
                 play.adaptGameboard();
@@ -94,6 +98,19 @@ function playing (){
                                 win.screen();
                                 win.box('BRAVO !!!', 'Vous avez trouvé toutes les cartes', arrTheme[idx][3]);
                                 win.closeBtn('restart', '2vw');
+
+                                document.querySelector('#btnFrameId').addEventListener('click', function (){
+                                    document.body.style.backgroundImage = 'none';
+                                    document.querySelector('h1').innerHTML = 'Memory';
+                                    game.style.opacity = "0";
+                                    game.innerHTML = "";
+                                    document.querySelector("#first").style.cssText = `
+                                        display : 'block';
+                                        opacity : '100%';
+                                        `;
+
+                                })
+
                             }, 1000)
                         }
                     }
@@ -116,9 +133,6 @@ function playing (){
     }
 }
 
-document.querySelector('#btnFrameId').addEventListener('click', function (){
-
-})
 
 /**
  * listen card, add class and hide
