@@ -33,7 +33,7 @@ main {
     margin: auto;
 }
 
-#choice {
+#number {
     width: 50%;
     margin: auto;
 }
@@ -48,43 +48,39 @@ section h2 {
     flex-basis: 100%;
 }
 
-#choice a {
-    text-decoration: none;
-    color: black;
+#number div {
     background-color: white;
-    font-size: 4vw;
+    font-size: 3vw;
     width: 6vw;
 }
 
 #game {
-    display: none;
+    /*display: none;*/
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     position: relative;
 }
 
-.theme, #game div {
+#game div {
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    border: 1px solid red;
 }
 
-.theme {
-    width: 30%;
-    padding-bottom: 30%;
-    background-image: url("img/lordOfRings/lotr01.png");
-
+.select {
+    box-shadow: yellow 0 0 2px 1px;
 }
 
 span {
     transition: transform .5s;
 }
 
-.face {
-    transform: rotateY(90deg);
-    transition: transform .5s;
-}
+/*.face {*/
+/*    transform: rotateY(90deg);*/
+/*    transition: transform .5s;*/
+/*}*/
 
 #theBox {
     background-size: cover;
@@ -93,3 +89,6 @@ span {
     -webkit-text-stroke: 1px #000;
 }
 
+#first {
+    transition: opacity 1s;
+}

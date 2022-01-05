@@ -1,7 +1,7 @@
 let arrTheme = [
     [
         "Mandalorian memory",
-        "url('img/mandalorian/mudhorn.png')",
+        "img/mandalorian/mudhorn.png",
         "url('img/mandalorian/land.png')",
         "url('img/mandalorian/mandalorian-end.jpg')",
         [
@@ -19,7 +19,7 @@ let arrTheme = [
         ],
     [
         "Seigneur des anneaux",
-        "url('img/lordOfRings/lotr01.png')",
+        "img/lordOfRings/lotr01.png",
         "url('img/lordOfRings/middleEarth.png')",
         "url('img/lordOfRings/oneRing.jpg')",
         [
@@ -36,5 +36,3 @@ let arrTheme = [
         ]
         ],
     ]
-
-console.log(arrTheme.length)

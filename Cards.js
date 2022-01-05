@@ -1,7 +1,8 @@
-function Cards (elem, array, nbr) {
+function Cards (elem, array, nbr, idx) {
     this.place = elem;
     this.arr = array;
     this.nbr = nbr;
+    this.idx = idx;
 
     /**
      * take the number of cards, add double,
@@ -10,7 +11,7 @@ function Cards (elem, array, nbr) {
     this.checkArray = function (){
         let newImg = [];
         for(let i = 0 ; i < this.nbr / 2 ; i++){
-            newImg.push(this.arr[0][4][i]);
+            newImg.push(this.arr[this.idx][4][i]);
         }
 
         let itemArr = [];
@@ -20,6 +21,7 @@ function Cards (elem, array, nbr) {
             itemArr.push(i);
             itemArr.push(i);
         }
+
 
         for(let i = 0 ; i < this.nbr ; i++){
             let x = Math.floor(Math.random() * itemArr.length);
@@ -49,14 +51,12 @@ function Cards (elem, array, nbr) {
 
     /**
      * cover each card
-     * @param url
      */
-    this.coverCards = function (url){
+    this.coverCards = function (){
         let one = game.getElementsByClassName('frame');
         for(let i = 0 ; i < nbr ; i++){
             let backCard = document.createElement('span');
             backCard.style.cssText = `
-                background-image: ` + url + `;
                 background-position: center;
                 background-size: contain;
                 background-repeat: no-repeat;
@@ -66,6 +66,9 @@ function Cards (elem, array, nbr) {
                 top: 0;
                 left: 0;
             `;
+
+            backCard.style.backgroundImage = 'url(' + this.arr[idx][1] + ')';
+
             one[i].appendChild(backCard);
         }
     }

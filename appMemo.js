@@ -2,31 +2,38 @@ let game = document.getElementById('game');
 game.style.height = innerHeight *0.9 + "px";
 
 let themes = document.querySelector('#themes');
-let number = document.getElementById('choice').getElementsByTagName("a");
+let number = document.getElementById('number').getElementsByTagName("div");
+let choice = document.getElementsByClassName('choice');
 
-// get themes
+// display themes
 for(let i = 0 ; i < arrTheme.length ; i++){
-    let div = document.createElement('div');
-    div.style.backgroundImage = arrTheme[i][1];
-    div.className = 'theme';
-    themes.appendChild(div);
+    let img = document.createElement('img');
+    img.src = arrTheme[i][1];
+    img.classList.add('choice');
+    img.dataset.idx = i.toString();
+    themes.appendChild(img);
 }
 
-// get user choice nbr = nbr of cards, theme = idx of theme
-let nbr = 0;
-for(let item of number){
-    item.addEventListener('click', function (event){
-        event.preventDefault();
-        nbr = item.innerHTML;
-        console.log(nbr);
-        // game
-        let play = new Cards(game, arrTheme, nbr);
+// get user choice nbr = nbr of cards, theme = url of theme
+let nbr;
+let idx;
+toggleClass(themes.getElementsByTagName('img'));
+toggleClass(number);
+
+for(let item of choice){
+    item.addEventListener('click', ()=> {
+        if(document.getElementsByClassName('select').length === 2){
+            nbr = document.getElementsByClassName('select')[0].innerHTML;
+            idx =document.getElementsByClassName('select')[1].dataset.idx;
+            document.getElementById('first').style.opacity = '0%';
+            setTimeout(()=>{document.getElementById('first').style.display = "none";},1000);
+            // game
+            let play = new Cards(game, arrTheme, nbr, idx);
+            play.checkArray();
+            play.coverCards();
+        }
     })
 }
-
-
-play.checkArray();
-play.coverCards(arrTheme[0][1]);
 
 // get element
 let backCard = game.getElementsByTagName('span');
@@ -48,7 +55,6 @@ for(let i = 0 ; i < backCard.length ; i++){
             setTimeout(function (){
                 face[i].style.transform = "rotate(0deg)";
             }, 500)
-
         }
 
         // get cards to test
@@ -85,7 +91,6 @@ for(let i = 0 ; i < backCard.length ; i++){
             test[0].classList.toggle('test');
             test[0].classList.toggle('test');
             time = test.length;
-
         }
     })
 }
@@ -96,4 +101,17 @@ function turnCard (item) {
     backCard[item].style.transform = 'rotateY(90deg)';
     face[item].classList.toggle('test');
     setTimeout(()=>face[item].style.transform = 'rotateY(0deg)', 500);
+}
+
+// give class to user selection
+function toggleClass (elements) {
+    for(let item of elements){
+        item.addEventListener('click', function (){
+            // dataset
+            for(let item of elements){
+                item.classList.remove('select');
+            }
+            item.classList.add('select');
+        })
+    }
 }
