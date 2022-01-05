@@ -20,7 +20,7 @@ let arrTheme = [
     [
         "Seigneur des anneaux",
         "img/lordOfRings/lotr01.png",
-        "url('img/lordOfRings/middleEarth.png')",
+        "url('img/lordOfRings/middleEarth.jpg')",
         "url('img/lordOfRings/oneRing.jpg')",
         [
             "img/lordOfRings/aragorn.png",

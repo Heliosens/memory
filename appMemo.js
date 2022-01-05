@@ -37,17 +37,21 @@ for(let item of choice){
                 game.style.display = "flex";
                 game.style.transition = "opacity 1s";
                 game.style.opacity = '100%';
-                },500);
-            // game
-            let play = new Cards(game, arrTheme, nbr, idx);
-            play.checkArray();
-            play.coverCards();
+                // game
+                let play = new Cards(game, arrTheme, nbr, idx);
+                play.adaptGameboard();
+                play.checkArray();
+                play.coverCards();
 
-            playing();
+                playing();
+                },1000);
         }
     })
 }
 
+/**
+ *
+ */
 function playing (){
     // get element
     backCard = game.getElementsByTagName('span');
@@ -88,9 +92,9 @@ function playing (){
                                 let win = new ModalWindow(document.body, '#ffffff80', '50%', '60vh',
                                     '#fff', "1px solid #fff");
                                 win.screen();
-                                win.box('BRAVO !!!', 'Vous avez trouvé toutes les cartes', arrTheme[0][3]);
+                                win.box('BRAVO !!!', 'Vous avez trouvé toutes les cartes', arrTheme[idx][3]);
+                                win.closeBtn('restart', '2vw');
                             }, 1000)
-
                         }
                     }
                 }
@@ -112,8 +116,14 @@ function playing (){
     }
 }
 
+document.querySelector('#btnFrameId').addEventListener('click', function (){
 
-// listen card, add class and hide
+})
+
+/**
+ * listen card, add class and hide
+ * @param item
+ */
 function turnCard (item) {
     // turn card
     backCard[item].style.transform = 'rotateY(90deg)';
@@ -121,7 +131,10 @@ function turnCard (item) {
     setTimeout(()=>face[item].style.transform = 'rotateY(0deg)', 500);
 }
 
-// give class to user selection
+/**
+ * give class to user selection
+ * @param elements
+ */
 function toggleClass (elements) {
     for(let item of elements){
         item.addEventListener('click', function (){

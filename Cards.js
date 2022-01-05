@@ -5,6 +5,14 @@ function Cards (elem, array, nbr, idx) {
     this.idx = idx;
 
     /**
+     * adapt gameboard
+     */
+    this.adaptGameboard = function (){
+        document.body.style.backgroundImage = this.arr[this.idx][2];
+        document.querySelector('h1').innerHTML = this.arr[this.idx][0];
+    }
+
+    /**
      * take the number of cards, add double,
      * check and display
      */
@@ -32,10 +40,18 @@ function Cards (elem, array, nbr, idx) {
         for(let i = 0 ; i < this.nbr ; i++){
             let frame = document.createElement('div');
             frame.style.width = 200 / nbr + "%";
-            frame.style.height = '30%';
             frame.style.position = 'relative';
             frame.classList.add('frame');
             frame.classList.add("hide");
+            // setting page
+            if(nbr > 15){
+                frame.style.height = '30%';
+                frame.style.flexBasis = "14%";
+            }
+            else {
+                frame.style.height = '40%';
+            }
+
             let face = document.createElement('div');
             face.classList.add("face");
 
