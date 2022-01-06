@@ -47,6 +47,10 @@ section h2 {
     flex-basis: 100%;
 }
 
+#themes img {
+    width: 20vw;
+}
+
 #number div {
     background-color: white;
     font-size: 3vw;

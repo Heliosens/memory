@@ -35,4 +35,22 @@ let arrTheme = [
             "img/lordOfRings/sam.png",
         ]
         ],
+    [
+        "Witcher memory",
+        "img/the_witcher/logo01.png",
+        "url('img/the_witcher/wild-hunt.jpg')",
+        "url('img/the_witcher/witcher_end.jpg')",
+        [
+            "img/the_witcher/yennefer.jpg",
+            "img/the_witcher/calanthe.jpg",
+            "img/the_witcher/ciri.jpg",
+            "img/the_witcher/duny.jpg",
+            "img/the_witcher/jaskier.jpg",
+            "img/the_witcher/pavetta.jpg",
+            "img/the_witcher/the-witcher01.jpg",
+            "img/the_witcher/the-witcher02.jpg",
+            "img/the_witcher/tisaia.jpg",
+            "img/the_witcher/triss.jpg",
+        ]
+    ],
     ]
