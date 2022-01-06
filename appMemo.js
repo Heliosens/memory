@@ -8,6 +8,7 @@ let choice = document.getElementsByClassName('choice');
 // display themes
 for(let i = 0 ; i < arrTheme.length ; i++){
     let img = document.createElement('img');
+    img.style.width = (60 / arrTheme.length) + "%"
     img.src = arrTheme[i][1];
     img.classList.add('choice');
     img.dataset.idx = i.toString();
